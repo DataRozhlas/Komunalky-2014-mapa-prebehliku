@@ -33,7 +33,7 @@ window.ig.utfgrid = grid = new L.UtfGrid "../data/tiles/{z}/{x}/{y}.json", useJs
     window.ig.displayData data
   ..on \click ({data}) ->
     return unless data
-    return unless data.2
+    return unless data.3
     if displayedId == data.0
       window.ig.showKandidatka data[0], data[1]
     else
