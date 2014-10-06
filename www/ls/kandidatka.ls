@@ -18,7 +18,7 @@ closeBtn = content.append \a
         window.top.location.hash = "000000"
 
 tableHeadings =
-  * value: (.cislo)
+  * value: -> parseInt it.cislo, 10
     sortable: 1
     name: '#'
   * value: -> "#{it.titulpred} #{it.jmeno}  #{it.prijmeni} #{it.titulza}"
