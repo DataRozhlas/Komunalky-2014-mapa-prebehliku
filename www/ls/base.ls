@@ -36,6 +36,7 @@ setView = (hash) ->
   return unless obec
   if obec
     setOutline iczuj
+    return if window.ig.hashChanged
     {lat, lon, nazev} = obec
     latlng = L.latLng [lat, lon]
     window.ig.map.setView latlng, 12

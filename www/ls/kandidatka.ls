@@ -15,6 +15,7 @@ closeBtn = content.append \a
   ..on \click ->
       container.classed \kandidatka-active no
       if window.top
+        window.ig.hashChanged = true
         window.top.location.hash = "000000"
 
 tableHeadings =
@@ -46,11 +47,13 @@ window.ig.showKandidatka = (obecId, obecName, filterByParty = null) ->
     ..on \filterChange ({index, value}) ->
       return if index != 5
       if window.top
+        window.ig.hashChanged = true
         window.top.location.hash = "#obecId|#value"
 
   if filterByParty
     dataTable.filterValues 5, filterByParty
   if window.top
+    window.ig.hashChanged = true
     window.top.location.hash = obecId
 
 displaySubset = (obecName, data) ->
