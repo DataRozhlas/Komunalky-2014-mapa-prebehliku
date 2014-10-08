@@ -2,6 +2,15 @@ vekGroups = <[18 25 30 35 40 45 50 55 60 65 70 75 80 85 90+]>
 titulClassNames = <[ing mgr mudr judr jiny bez]>
 titulLegend = [\Ing. \Mgr. \MUDr. \JUDr. \Jiný "Bez titulu"]
 
+bezKandidatky =
+  "Petkovy"
+  "Zadní Střítež"
+  "Srní"
+  "Úherce"
+  "Víska u Jevíčka"
+  "Slavníč"
+  "Růžená"
+
 window.ig.InfoBar = class InfoBar
   (parentElement) ->
     @init parentElement
@@ -9,9 +18,11 @@ window.ig.InfoBar = class InfoBar
   displayData: ({nazev, celkem, prebehliku}) ->
     @nazev.text "#{nazev}"
     @container.classed \noData celkem == 0
-    if celkem == 0
-      @helpText.html "Vojenský újezd"
-      celkem = 1
+    if !celkem
+      if nazev in bezKandidatky
+        @helpText.html "Obec nesestavila kandidátku"
+      else
+        @helpText.html "Vojenský újezd"
     else
       @helpText.html "Kliknutím do mapy zobrazíte detail kandidátky"
 
