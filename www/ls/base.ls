@@ -3,7 +3,7 @@ body = d3.select \body
 window.ig.infoBar = new ig.InfoBar body
 window.ig.displayData = (data) ->
   [id, nazev, prebehliku, celkem] = data
-  window.ig.infoBar.displayData {nazev, celkem, prebehliku}
+  window.ig.infoBar.displayData {id, nazev, celkem, prebehliku}
 
 selectedOutline = null
 suggesterContainer = body.append \div

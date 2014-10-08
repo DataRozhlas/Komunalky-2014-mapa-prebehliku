@@ -15,12 +15,14 @@ window.ig.InfoBar = class InfoBar
   (parentElement) ->
     @init parentElement
 
-  displayData: ({nazev, celkem, prebehliku}) ->
+  displayData: ({id, nazev, celkem, prebehliku}) ->
     @nazev.text "#{nazev}"
     @container.classed \noData celkem == 0
     if !celkem
       if nazev in bezKandidatky
         @helpText.html "Obec nesestavila kandidátku"
+      else if not id
+        @helpText.html "Obec nemá magistrát"
       else
         @helpText.html "Vojenský újezd"
     else

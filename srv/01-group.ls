@@ -12,7 +12,7 @@ groupVek = (vek) ->
   Math.ceil vek / 5
 
 
-stream = fs.createReadStream "#__dirname/../data/prebehlici.csv"
+stream = fs.createReadStream "#__dirname/../data/prebehliciMapa.csv"
 reader = parse {delimiter: ','}
 stream.pipe reader
 
@@ -26,12 +26,13 @@ initObec = (id, nazev) ->
 
 
 reader.on \data (line) ->
-  [...pycoviny, prebehlik, kodzastup, ID, mandaty, pocobyv, obec] = line
+  [_, _, ID, _, obec, ...pycoviny, prebehlik] = line
   return if obec == \NAZEVOBCE
+  return if ID not in <[582786 563889 555134 554821 554804 554791 554782 505927]>
   if not obce[ID] then initObec ID, obec
   obec = obce[ID]
   obec.celkem++
-  if prebehlik == \True
+  if prebehlik == \TRUE
     obec.prebehliku++
 <~ reader.on \end
 
@@ -43,5 +44,5 @@ obce_arr.unshift do
   for key, value of obec
     key
 fs.writeFileSync do
-  "#__dirname/../data/obce.tsv"
+  "#__dirname/../data/magose.tsv"
   obce_arr.map (.join '\t') .join '\n'
