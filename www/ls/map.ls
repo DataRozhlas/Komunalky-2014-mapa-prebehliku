@@ -83,7 +83,7 @@ layers =
     name: 'Obce a městské části'
   * layer: dataLayer2
     dataLayer: grid2
-    name: 'Magistáty'
+    name: 'Magistráty'
 
 
 
